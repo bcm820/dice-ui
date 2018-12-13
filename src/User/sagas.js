@@ -8,7 +8,7 @@ export function* sendUserRequest() {
   const paragraph = generateParagraph();
   const payload = { [counter++]: paragraph };
   yield all([
-    put({ type: actions.user.success, payload }),
+    put({ type: actions.user.success, payload: paragraph }),
     put({ type: actions.words.success, payload: paragraph.length })
   ]);
   yield put({ type: actions.allUsers.success, payload });

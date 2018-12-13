@@ -8,7 +8,7 @@ export function* sendRepoRequest() {
   const paragraph = generateParagraph();
   const payload = { [counter++]: paragraph };
   yield all([
-    put({ type: actions.repo.success, payload }),
+    put({ type: actions.repo.success, payload: paragraph }),
     put({ type: actions.words.success, payload: paragraph.length })
   ]);
   yield put({ type: actions.allRepos.success, payload });
