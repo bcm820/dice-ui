@@ -4,10 +4,18 @@ const createActions = type => ({
   error: `${type}: Error`
 });
 
-export default {
-  userList: createActions('User List'),
-  repoList: createActions('Repo List'),
-  user: createActions('User'),
-  repo: createActions('Repo'),
-  words: createActions('Word Count')
+export const actions = {
+  userList: createActions('Get User List'),
+  repoList: createActions('Get Repo List'),
+  user: createActions('Get User'),
+  repo: createActions('Get Repo'),
+  words: createActions('Update Word Count'),
+  allRepos: createActions('Store Repo'),
+  allUsers: createActions('Store User')
+};
+
+export const dispatch = {
+  fetchLists: () => ({ type: 'Get Lists: Request' }),
+  fetchUser: () => ({ type: actions.user.request }),
+  fetchRepo: () => ({ type: actions.repo.request })
 };

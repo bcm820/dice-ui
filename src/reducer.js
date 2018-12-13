@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import actions from './actions';
+import { actions } from './actions';
 
 const reducerShapes = {
   current: {
@@ -9,7 +9,7 @@ const reducerShapes = {
   },
   accumulator: {
     initialState: {},
-    successAction: (state, data) => ({ ...state, ...data }), // pass obj with keyId: data
+    successAction: (state, data) => ({ ...state, ...data }),
     errorAction: (state, _) => state
   },
   count: {
@@ -46,7 +46,7 @@ export default combineReducers({
   repoList: makeReducer(actions.repoList),
   user: makeReducer(actions.user),
   repo: makeReducer(actions.repo),
-  words: makeReducer(actions.words, 'count')
-  // allRepos: {}
-  // allUsers: {}
+  words: makeReducer(actions.words, 'count'),
+  allRepos: makeReducer(actions.allRepos, 'accumulator'),
+  allUsers: makeReducer(actions.allUsers, 'accumulator')
 });

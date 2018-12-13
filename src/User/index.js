@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchRepo } from '../Repo/sagas';
+import { dispatch } from '../actions';
 
 import { Slide, Heading, Text, List, ListItem } from 'spectacle';
 
-// dispatch currentDisplay
-// dispatch fetchOther
-
-const User = ({ dispatch }) => (
-  <Slide bgColor="secondary" onActive={dispatch}>
+const User = ({ fetchRepo }) => (
+  <Slide bgColor="secondary" onActive={fetchRepo}>
     <Heading size={1} fit lineHeight={1} textColor="primary">
       Featured Project
     </Heading>
@@ -24,5 +21,5 @@ const User = ({ dispatch }) => (
 
 export default connect(
   null,
-  fetchRepo
+  dispatch
 )(User);

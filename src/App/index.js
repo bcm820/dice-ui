@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { listsDispatches } from './sagas';
+import { dispatch } from '../actions';
 
 import { Deck } from 'spectacle';
 import config from './spectacle';
@@ -13,8 +13,8 @@ class App extends React.Component {
     this.props.fetchLists();
   }
   render() {
-    // const slideDuration = this.props.words * 300 || 15000;
-    const slideDuration = 15000;
+    const slideDuration = 30000;
+    // const slideDuration = this.props.words * 250 || 30000;
     return (
       <Deck {...config} autoplayDuration={slideDuration}>
         <Repo transition={['fade']} />
@@ -25,6 +25,6 @@ class App extends React.Component {
 }
 
 export default connect(
-  null,
-  listsDispatches
+  ({ words }) => ({ words }),
+  dispatch
 )(App);
