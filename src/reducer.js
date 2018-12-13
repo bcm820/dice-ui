@@ -1,16 +1,10 @@
 import { combineReducers } from 'redux';
-import {
-  userListActions,
-  repoListActions,
-  wordCountActions
-} from './App/sagas';
-import { repoActions } from './Repo/sagas';
-import { userActions } from './User/sagas';
+import actions from './actions';
 
 const reducerShapes = {
   current: {
-    initialState: { data: null, error: false },
-    successAction: (_, data) => ({ data, error: false }),
+    initialState: { data: null },
+    successAction: (_, data) => ({ data }),
     errorAction: (_, error) => ({ data: null, error })
   },
   accumulator: {
@@ -29,17 +23,17 @@ const reducerShapes = {
  * Defines one of two types of reducers:
  * 1. Stores a single object in either `data` (if success) or `error` (if failed)
  * 2. Stores a collection of objects previously fetched
- * @param {Object} actions - Object describing request, success, error actions
+ * @param {Object} actionObj - Object describing request, success, error actions
  * @param {boolean} isSingleObj - Whether slice to update is a single container
  * @returns {Object|Array} Next slice of a container's state
  */
-const makeReducer = (actions, reducerKey = 'current') => {
+const makeReducer = (actionObj, reducerKey = 'current') => {
   const shape = reducerShapes[reducerKey];
   return (state = shape.initialState, action) => {
     switch (action.type) {
-      case actions.success:
+      case actionObj.success:
         return shape.successAction(state, action.payload);
-      case actions.error:
+      case actionObj.error:
         return shape.errorAction(state, action.payload);
       default:
         return state;
@@ -48,11 +42,11 @@ const makeReducer = (actions, reducerKey = 'current') => {
 };
 
 export default combineReducers({
-  words: makeReducer(wordCountActions, 'count'),
-  userList: makeReducer(userListActions),
-  repoList: makeReducer(repoListActions),
-  user: makeReducer(userActions),
-  repo: makeReducer(repoActions)
+  userList: makeReducer(actions.userList),
+  repoList: makeReducer(actions.repoList),
+  user: makeReducer(actions.user),
+  repo: makeReducer(actions.repo),
+  words: makeReducer(actions.words, 'count')
   // allRepos: {}
   // allUsers: {}
 });

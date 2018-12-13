@@ -1,19 +1,13 @@
 import { put, all } from 'redux-saga/effects';
-import { wordCountActions } from '../App/sagas';
-
-export const repoActions = {
-  request: 'Repo: Request',
-  success: 'Repo: Success',
-  error: 'Repo: Error'
-};
+import actions from '../actions';
 
 export const fetchRepo = {
-  dispatch: () => ({ type: repoActions.request })
+  dispatch: () => ({ type: actions.repo.request })
 };
 
 export function* sendRepoRequest() {
   yield all([
-    put({ type: repoActions.success, payload: {} }),
-    put({ type: wordCountActions.success, payload: 500 })
+    put({ type: actions.repo.success, payload: {} }),
+    put({ type: actions.words.success, payload: 500 })
   ]);
 }
