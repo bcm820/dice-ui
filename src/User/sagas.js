@@ -1,17 +1,20 @@
 import { put, all } from 'redux-saga/effects';
-import actions from '../actions';
+import { actions } from '../actions';
 
-export const fetchUser = {
-  dispatch: () => ({ type: actions.user.request })
-};
+import { generateParagraph } from '../utils';
 
+let counter = 0;
 export function* sendUserRequest() {
+  const paragraph = generateParagraph();
+  const payload = { [counter++]: paragraph };
   yield all([
-    put({ type: actions.user.success, payload: {} }),
-    put({ type: actions.words.success, payload: 500 })
+    put({ type: actions.user.success, payload }),
+    put({ type: actions.words.success, payload: paragraph.length })
   ]);
+  yield put({ type: actions.allUsers.success, payload });
 }
 
-// TODO: Use `select` to get random if fetch fails
-// Create a selector
-// https://stackoverflow.com/questions/38405700/getstate-in-redux-saga
+// Choose random id from list
+// Check lastFetched
+// If lastFetched > 30 min., fetch, store, and display
+// Else, display stored

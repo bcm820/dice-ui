@@ -1,13 +1,15 @@
 import { put, all } from 'redux-saga/effects';
-import actions from '../actions';
+import { actions } from '../actions';
 
-export const fetchRepo = {
-  dispatch: () => ({ type: actions.repo.request })
-};
+import { generateParagraph } from '../utils';
 
+let counter = 0;
 export function* sendRepoRequest() {
+  const paragraph = generateParagraph();
+  const payload = { [counter++]: paragraph };
   yield all([
-    put({ type: actions.repo.success, payload: {} }),
-    put({ type: actions.words.success, payload: 500 })
+    put({ type: actions.repo.success, payload }),
+    put({ type: actions.words.success, payload: paragraph.length })
   ]);
+  yield put({ type: actions.allRepos.success, payload });
 }
