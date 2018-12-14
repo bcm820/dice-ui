@@ -37,7 +37,7 @@ export function* sendUserRequest() {
       username: randUser.username,
       image: randUser.avatar_url,
       email: randUser.email,
-      repos: repository.map(({ name }) => name),
+      repos: (repository || []).map(({ name }) => name),
       activities: { short, long: long.length ? long[0] : null },
       lastFetched: Date.now()
     };

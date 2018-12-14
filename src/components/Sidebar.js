@@ -39,15 +39,17 @@ const Sidebar = ({
     >
       {subHeading}
     </Text>
-    <Text
-      textAlign={'left'}
-      caps
-      style={{ letterSpacing: '0.05em', opacity: 0.7, fontSize: '2vw' }}
-    >
-      {listHeading}
-    </Text>
-    {list.map(item => (
-      <Text key={item} textAlign={'left'} style={{ fontSize: '1.5vw' }}>
+    {list.length ? (
+      <Text
+        textAlign={'left'}
+        caps
+        style={{ letterSpacing: '0.05em', opacity: 0.7, fontSize: '2vw' }}
+      >
+        {listHeading}
+      </Text>
+    ) : null}
+    {list.map((item, i) => (
+      <Text key={item + i} textAlign={'left'} style={{ fontSize: '1.5vw' }}>
         {item}
       </Text>
     ))}
