@@ -4,8 +4,7 @@ import { dispatch } from '../../actions';
 
 import { Slide } from 'spectacle';
 import Layout from '../../components/Layout';
-
-import { tempRepo } from './temp.js';
+import logo from './logo.png';
 
 class Repo extends React.Component {
   componentDidMount() {
@@ -13,16 +12,17 @@ class Repo extends React.Component {
   }
 
   render() {
-    // const { repo } = this.props;
+    const repo = this.props.repo.data;
     return (
       <Slide align={'flex-start flex-start'}>
         <Layout
-          sidebarHeading={tempRepo.repoName}
-          sidebarSubHeading={tempRepo.repoDesc}
-          image={tempRepo.image}
-          listHeading={'Contributors'}
-          list={tempRepo.contributors}
-          events={[tempRepo.event]}
+          sidebarHeading={repo.name}
+          sidebarSubHeading={repo.description}
+          sidebarSubText={`Language: ${repo.language}`}
+          image={logo}
+          listHeading={'Dates'}
+          list={[`Created: ${repo.createdAt}`, `Updated: ${repo.updatedAt}`]}
+          activities={repo.activities}
         />
       </Slide>
     );
