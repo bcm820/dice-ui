@@ -10,7 +10,7 @@ const SingleDisplay = ({ activity }) => (
       caps
       style={{ letterSpacing: '0.05em', opacity: 0.7 }}
     >
-      Recent Event
+      Recent Activity
     </Text>
     <Heading
       textAlign={'left'}
@@ -19,6 +19,14 @@ const SingleDisplay = ({ activity }) => (
       style={{ textShadow: '0.7px 0.7px black', paddingTop: 20 }}
     >
       {activity.type}
+    </Heading>
+    <Heading
+      textAlign={'left'}
+      size={6}
+      textColor={'tertiary'}
+      style={{ textShadow: '0.7px 0.7px black' }}
+    >
+      {activity.repo_name}
     </Heading>
     <Markdown
       style={{

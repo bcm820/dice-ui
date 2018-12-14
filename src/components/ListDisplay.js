@@ -10,7 +10,7 @@ const Main = ({ list }) => (
       caps
       style={{ letterSpacing: '0.05em', opacity: 0.7 }}
     >
-      Recent Events
+      Recent Activities
     </Text>
     {list.map(item => (
       <React.Fragment key={item.created_at}>
