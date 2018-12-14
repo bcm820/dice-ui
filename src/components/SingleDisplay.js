@@ -1,6 +1,5 @@
 import React from 'react';
-import ReactMarkdown from 'react-markdown';
-import { Heading, Text } from 'spectacle';
+import { Heading, Text, Markdown } from 'spectacle';
 import { ellipsis } from '../utils';
 
 const SingleDisplay = ({ heading, content }) => (
@@ -20,14 +19,14 @@ const SingleDisplay = ({ heading, content }) => (
     >
       {heading}
     </Heading>
-    <Text
-      textAlign={'left'}
+    <Markdown
       style={{
-        fontSize: '2.5vw'
+        fontSize: '2.5vw',
+        textAlign: 'left'
       }}
     >
-      <ReactMarkdown source={ellipsis(content, 60)} />
-    </Text>
+      {ellipsis(content, 60)}
+    </Markdown>
   </React.Fragment>
 );
 

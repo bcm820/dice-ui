@@ -14,6 +14,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log('render!');
     // const slideDuration = this.props.words * 250 || 30000;
     const slideDuration = 3000;
     return (
