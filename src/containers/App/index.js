@@ -19,8 +19,9 @@ class App extends React.Component {
   render() {
     const { user, repo } = this.props;
     return user && repo ? (
-      <Deck {...config} autoplayDuration={10000000000 || SLIDE_DURATION}>
-        <UserLongSummary transition={['fade']} />
+      <Deck {...config} autoplayDuration={5000 || SLIDE_DURATION}>
+        <User transition={['fade']} />
+        {user.activities.long && <UserLongSummary transition={['fade']} />}
       </Deck>
     ) : (
       <div>Loading...</div>
@@ -28,7 +29,6 @@ class App extends React.Component {
   }
 }
 
-// <User transition={['fade']} />
 // <Repo transition={['fade']} />
 export default connect(
   ({ user, repo }) => ({ user: user.data, repo: repo.data }),

@@ -17,10 +17,10 @@ export function* sendListsRequests() {
     yield put({ type: actions.repoList.error, payload: repoListData });
   if (!userListError && !repoListError) {
     const { users } = userListData;
-    const { repos } = repoListData;
+    const { repositories } = repoListData;
     yield all([
       put({ type: actions.userList.success, payload: users }),
-      put({ type: actions.repoList.success, payload: repos })
+      put({ type: actions.repoList.success, payload: repositories })
     ]);
     yield all([
       put({ type: actions.user.request }),

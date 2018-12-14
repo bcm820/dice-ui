@@ -12,29 +12,26 @@ export function* sendRepoRequest() {
   if (lastFetched && Date.now() - lastFetched < 3000) return;
 
   const randRepo = getRandom(repoList.data);
-  const storedRepo = allRepos[randRepo.name];
+  const storedRepo = allRepos[randRepo.FullName];
   if (storedRepo && Date.now() - storedRepo.lastFetched < 1800000)
     return yield put({ type: actions.repo.success, payload: storedRepo });
 
-  const [userData, acts] = yield all([
-    call(api('repoUsers', randRepo.name)),
-    call(api('repoActivities', randRepo.name))
-  ]);
+  const acts = yield call(api('repoActivities', randRepo.FullName));
 
-  if (userData instanceof Error)
-    yield put({ type: actions.repo.error, payload: userData });
-  else if (acts instanceof Error)
+  if (acts instanceof Error)
     yield put({ type: actions.repo.error, payload: acts });
   else {
-    const { users } = userData;
     const { activity } = acts;
     const [short, long] = partition(
       activity,
       a => getWordLength(a.summaryline) <= SHORT_SUMMARY_WORD_LENGTH
     );
     const payload = {
-      name: randRepo.name,
-      users,
+      name: randRepo.FullName,
+      description: randRepo.Description,
+      language: randRepo.Language,
+      createdAt: randRepo.CreatedAt,
+      updatedAt: randRepo.UpdatedAt,
       activities: { short, long: long.length ? long[0] : null },
       lastFetched: Date.now()
     };
