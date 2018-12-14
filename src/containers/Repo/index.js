@@ -13,6 +13,7 @@ class Repo extends React.Component {
 
   render() {
     const repo = this.props.repo.data;
+    const { shortSummaries } = this.props;
     return (
       <Slide align={'flex-start flex-start'}>
         <Layout
@@ -23,6 +24,7 @@ class Repo extends React.Component {
           listHeading={'Dates'}
           list={[`Created: ${repo.createdAt}`, `Updated: ${repo.updatedAt}`]}
           activities={repo.activities}
+          shortSummaries={shortSummaries}
         />
       </Slide>
     );

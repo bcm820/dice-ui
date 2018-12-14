@@ -12,6 +12,7 @@ class User extends React.Component {
 
   render() {
     const user = this.props.user.data;
+    const { shortSummaries } = this.props;
     return (
       <Slide align={'flex-start flex-start'}>
         <Layout
@@ -22,6 +23,7 @@ class User extends React.Component {
           listHeading={'Primary Repositories'}
           list={user.repos}
           activities={user.activities}
+          shortSummaries={shortSummaries}
         />
       </Slide>
     );

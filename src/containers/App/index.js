@@ -7,10 +7,6 @@ import config from './spectacle';
 
 import Repo from '../Repo';
 import User from '../User';
-import UserLongSummary from '../User/UserLongSummary';
-import RepoLongSummary from '../Repo/RepoLongSummary';
-
-// import { SLIDE_DURATION } from '../../constants';
 
 class App extends React.Component {
   componentDidMount() {
@@ -22,9 +18,9 @@ class App extends React.Component {
     return user && repo ? (
       <Deck {...config} autoplayDuration={8000}>
         <User transition={['fade']} />
-        <UserLongSummary transition={['fade']} />
         <Repo transition={['fade']} />
-        <RepoLongSummary transition={['fade']} />
+        <User transition={['fade']} shortSummaries={false} />
+        <Repo transition={['fade']} shortSummaries={false} />
       </Deck>
     ) : (
       <div>Loading...</div>

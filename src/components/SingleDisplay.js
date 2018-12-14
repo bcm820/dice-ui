@@ -53,9 +53,15 @@ const SingleDisplay = ({ activity }) => (
           No Activity Found!
         </Heading>
         <Text textAlign={'left'}>
-          We couldn't find any activity for this user / repository. But we're
-          sure that the developer(s) are very hard at work! Maybe there will be
-          more information to display later on...
+          We couldn't find any activity for this user / repository.
+          <br />
+          <br />
+          This screen tracks activity like issues and other major events.
+          <br />
+          <br />
+          We're sure the developer(s) represented on this slide are very hard at
+          work! Maybe next time this slide loads there will be more information
+          to display...
         </Text>
       </React.Fragment>
     )}
