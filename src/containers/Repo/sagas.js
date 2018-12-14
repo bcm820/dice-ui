@@ -6,6 +6,8 @@ import get from 'lodash.get';
 import partition from 'lodash.partition';
 import { SHORT_SUMMARY_WORD_LENGTH } from '../../constants';
 
+import { simpleParseTime } from '../../utils';
+
 export function* sendRepoRequest() {
   const { repo, repoList, allRepos } = yield select();
   const lastFetched = get(repo, 'data.lastFetched', null);
@@ -30,8 +32,8 @@ export function* sendRepoRequest() {
       name: randRepo.FullName,
       description: randRepo.Description,
       language: randRepo.Language,
-      createdAt: randRepo.CreatedAt,
-      updatedAt: randRepo.UpdatedAt,
+      createdAt: simpleParseTime(randRepo.CreatedAt),
+      updatedAt: simpleParseTime(randRepo.UpdatedAt),
       activities: { short, long: long.length ? long[0] : null },
       lastFetched: Date.now()
     };

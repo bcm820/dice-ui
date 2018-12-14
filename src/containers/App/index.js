@@ -22,9 +22,9 @@ class App extends React.Component {
     return user && repo ? (
       <Deck {...config} autoplayDuration={8000}>
         <User transition={['fade']} />
-        {user.activities.long && <UserLongSummary transition={['fade']} />}
+        <UserLongSummary transition={['fade']} />
         <Repo transition={['fade']} />
-        {repo.activities.long && <RepoLongSummary transition={['fade']} />}
+        <RepoLongSummary transition={['fade']} />
       </Deck>
     ) : (
       <div>Loading...</div>

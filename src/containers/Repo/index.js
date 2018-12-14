@@ -8,7 +8,7 @@ import logo from './logo.png';
 
 class Repo extends React.Component {
   componentDidMount() {
-    this.props.fetchUser();
+    setTimeout(this.props.fetchUser, 1000);
   }
 
   render() {

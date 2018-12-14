@@ -12,16 +12,16 @@ const SingleDisplay = ({ activity }) => (
     >
       Recent Activity
     </Text>
-    <Heading
-      textAlign={'left'}
-      size={5}
-      textColor={'tertiary'}
-      style={{ textShadow: '0.7px 0.7px black', paddingTop: 20 }}
-    >
-      {activity.type || 'No Activity Found!'}
-    </Heading>
     {activity ? (
       <React.Fragment>
+        <Heading
+          textAlign={'left'}
+          size={5}
+          textColor={'tertiary'}
+          style={{ textShadow: '0.7px 0.7px black', paddingTop: 20 }}
+        >
+          {activity.type}
+        </Heading>
         <Heading
           textAlign={'left'}
           size={6}
@@ -43,11 +43,21 @@ const SingleDisplay = ({ activity }) => (
         </Markdown>
       </React.Fragment>
     ) : (
-      <Text textAlign={'left'}>
-        We couldn't find any activity for this user / repository. But we're sure
-        that the developer(s) are very hard at work! Maybe there will be more
-        information to display later on...
-      </Text>
+      <React.Fragment>
+        <Heading
+          textAlign={'left'}
+          size={5}
+          textColor={'tertiary'}
+          style={{ textShadow: '0.7px 0.7px black', paddingTop: 20 }}
+        >
+          No Activity Found!
+        </Heading>
+        <Text textAlign={'left'}>
+          We couldn't find any activity for this user / repository. But we're
+          sure that the developer(s) are very hard at work! Maybe there will be
+          more information to display later on...
+        </Text>
+      </React.Fragment>
     )}
   </React.Fragment>
 );

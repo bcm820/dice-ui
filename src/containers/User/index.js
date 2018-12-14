@@ -7,7 +7,7 @@ import Layout from '../../components/Layout';
 
 class User extends React.Component {
   componentDidMount() {
-    this.props.fetchRepo();
+    setTimeout(this.props.fetchRepo, 1000);
   }
 
   render() {
