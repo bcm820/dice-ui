@@ -19,3 +19,8 @@ export const generateParagraph = () => {
   }
   return paragraph;
 };
+
+export const ellipsis = (str, limit) => {
+  const words = str.split(' ');
+  return words.length < limit ? str : `${words.slice(0, limit).join(' ')}...`;
+};

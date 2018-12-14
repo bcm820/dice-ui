@@ -7,12 +7,7 @@ const COLORS = {
 };
 
 const FONTS = {
-  primary: 'Helvetica',
-  secondary: {
-    name: 'Droid Serif',
-    googleFont: true,
-    styles: ['400', '700i']
-  }
+  primary: 'Helvetica'
 };
 
 const config = {

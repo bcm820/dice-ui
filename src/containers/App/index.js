@@ -18,8 +18,8 @@ class App extends React.Component {
     const slideDuration = 3000;
     return (
       <Deck {...config} autoplayDuration={slideDuration}>
-        <User transition={['fade']} />
         <Repo transition={['fade']} />
+        <User transition={['fade']} />
       </Deck>
     );
   }
