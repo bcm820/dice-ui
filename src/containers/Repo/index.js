@@ -18,7 +18,7 @@ class Repo extends React.Component {
         <Layout
           sidebarHeading={repo.name}
           sidebarSubHeading={repo.description}
-          sidebarSubText={`Language: ${repo.language}`}
+          sidebarSubText={repo.language ? `Language: ${repo.language}` : null}
           image={logo}
           listHeading={'Dates'}
           list={[`Created: ${repo.createdAt}`, `Updated: ${repo.updatedAt}`]}

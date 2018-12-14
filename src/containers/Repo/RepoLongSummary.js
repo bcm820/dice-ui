@@ -10,7 +10,7 @@ const RepoLongSummary = ({ repo: { data } }) => (
     <Layout
       sidebarHeading={data.name}
       sidebarSubHeading={data.description}
-      sidebarSubText={`Language: ${data.language}`}
+      sidebarSubText={data.language ? `Language: ${data.language}` : null}
       image={logo}
       listHeading={'Dates'}
       list={[`Created: ${data.createdAt}`, `Updated: ${data.updatedAt}`]}
