@@ -4,7 +4,8 @@ import { dispatch } from '../../actions';
 
 import { Slide } from 'spectacle';
 import Layout from '../../components/Layout';
-import samplePhoto from './temp.jpeg';
+
+import { tempUserMult } from './temp.js';
 
 class User extends React.Component {
   componentDidMount() {
@@ -15,27 +16,17 @@ class User extends React.Component {
 
   render() {
     const { user } = this.props;
-    const tempUser = {
-      displayName: 'Robert Fielding',
-      username: 'rfielding',
-      image: samplePhoto,
-      repos: ['gm-data-aac', 'gm-data'],
-      activity: 'Closed an issue in DecipherNow/gm-data #114',
-      content: `I am currently getting TLS setup with MongoDB. It works locally (outside
-        of containers). I am currently getting TLS setup with MongoDB. It works
-        locally (outside of containers).`
-    };
     return user.data ? (
       <Slide align={'flex-start flex-start'}>
         <Layout
-          contentType={'Recent Activity'}
-          sidebarHeading={tempUser.displayName}
-          sidebarSubHeading={tempUser.username}
-          image={tempUser.image}
+          sidebarHeading={tempUserMult.displayName}
+          sidebarSubHeading={tempUserMult.username}
+          image={tempUserMult.image}
           listHeading={'Primary Repositories'}
-          list={tempUser.repos}
-          mainHeading={tempUser.activity}
-          mainContent={tempUser.content}
+          list={tempUserMult.repos}
+          events={
+            tempUserMult.event ? [tempUserMult.event] : tempUserMult.events
+          }
         />
       </Slide>
     ) : (

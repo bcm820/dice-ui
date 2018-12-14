@@ -2,51 +2,43 @@ import React from 'react';
 
 import { Table, TableBody, TableRow, TableItem } from 'spectacle';
 
-import Main from './Main';
 import Sidebar from './Sidebar';
+import SingleDisplay from './SingleDisplay';
+import ListDisplay from './ListDisplay';
 
 const Layout = ({
-  contentType,
   sidebarHeading,
   sidebarSubHeading,
   image,
   listHeading,
   list,
-  mainHeading,
-  mainContent,
-  sidebarLeft = true
-}) => {
-  const mainPlacement = sidebarLeft
-    ? { paddingLeft: 40, paddingRight: 40 }
-    : { paddingRight: 120 };
-  const renderMain = () => (
-    <TableItem style={mainPlacement}>
-      <Main
-        contentType={contentType}
-        heading={mainHeading}
-        content={mainContent}
-      />
-    </TableItem>
-  );
-  return (
-    <Table style={{ height: '100vh', width: '100vw', paddingBottom: 100 }}>
-      <TableBody>
-        <TableRow>
-          {!sidebarLeft && renderMain()}
-          <TableItem style={{ paddingLeft: 40, paddingRight: 40 }}>
-            <Sidebar
-              heading={sidebarHeading}
-              subHeading={sidebarSubHeading}
-              image={image}
-              listHeading={listHeading}
-              list={list}
+  events
+}) => (
+  <Table style={{ height: '100vh', width: '97vw', paddingBottom: 100 }}>
+    <TableBody>
+      <TableRow>
+        <TableItem style={{ paddingLeft: 50, paddingRight: 25 }}>
+          <Sidebar
+            heading={sidebarHeading}
+            subHeading={sidebarSubHeading}
+            image={image}
+            listHeading={listHeading}
+            list={list}
+          />
+        </TableItem>
+        <TableItem style={{ paddingLeft: 25, paddingRight: 50 }}>
+          {events.length === 1 ? (
+            <SingleDisplay
+              heading={events[0].title}
+              content={events[0].description}
             />
-          </TableItem>
-          {sidebarLeft && renderMain()}
-        </TableRow>
-      </TableBody>
-    </Table>
-  );
-};
+          ) : (
+            <ListDisplay list={events} />
+          )}
+        </TableItem>
+      </TableRow>
+    </TableBody>
+  </Table>
+);
 
 export default Layout;
