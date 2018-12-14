@@ -4,10 +4,10 @@ import rootReducer from './reducer';
 
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery } from 'redux-saga/effects';
-import { sendListsRequests } from './App/sagas';
 import { actions } from './actions';
-import { sendRepoRequest } from './Repo/sagas';
-import { sendUserRequest } from './User/sagas';
+import { sendListsRequests } from './containers/App/sagas';
+import { sendRepoRequest } from './containers/Repo/sagas';
+import { sendUserRequest } from './containers/User/sagas';
 
 function* rootSaga() {
   yield takeEvery('Get Lists: Request', sendListsRequests);

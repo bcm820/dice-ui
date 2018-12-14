@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dispatch } from '../actions';
+import { dispatch } from '../../actions';
 
 import { Deck } from 'spectacle';
 import config from './spectacle';
@@ -12,13 +12,14 @@ class App extends React.Component {
   componentDidMount() {
     this.props.fetchLists();
   }
+
   render() {
-    const slideDuration = 30000;
     // const slideDuration = this.props.words * 250 || 30000;
+    const slideDuration = 3000;
     return (
       <Deck {...config} autoplayDuration={slideDuration}>
-        <Repo transition={['fade']} />
         <User transition={['fade']} />
+        <Repo transition={['fade']} />
       </Deck>
     );
   }

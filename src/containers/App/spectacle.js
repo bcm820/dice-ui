@@ -1,10 +1,9 @@
 import createTheme from 'spectacle/lib/themes/default';
 
 const COLORS = {
-  primary: 'white',
-  secondary: '#1F2022',
-  tertiary: '#03A9FC',
-  quaternary: '#CECECE'
+  primary: '#FFFFFF',
+  secondary: '#000000',
+  tertiary: '#0aab2a'
 };
 
 const FONTS = {
@@ -23,7 +22,9 @@ const config = {
   controls: false,
   autoplay: true,
   autoplayLoop: true,
-  theme: createTheme(COLORS, FONTS)
+  theme: createTheme(COLORS, FONTS),
+  contentHeight: document.documentElement.clientHeight,
+  contentWidth: document.documentElement.clientWidth
 };
 
 export default config;

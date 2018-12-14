@@ -1,5 +1,5 @@
 import { put, all } from 'redux-saga/effects';
-import { actions } from '../actions';
+import { actions } from '../../actions';
 
 export function* sendListsRequests() {
   yield all([

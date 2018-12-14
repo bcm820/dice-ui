@@ -1,7 +1,7 @@
 import { put, all } from 'redux-saga/effects';
-import { actions } from '../actions';
+import { actions } from '../../actions';
 
-import { generateParagraph } from '../utils';
+import { generateParagraph } from '../../utils';
 
 let counter = 0;
 export function* sendRepoRequest() {
