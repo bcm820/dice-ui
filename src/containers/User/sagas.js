@@ -35,7 +35,9 @@ export function* sendUserRequest() {
     const payload = {
       name: randUser.display_name,
       username: randUser.username,
-      repos: repository.map(({ name }) => ({ name })),
+      image: randUser.avatar_url,
+      email: randUser.email,
+      repos: repository.map(({ name }) => name),
       activities: { short, long: long.length ? long[0] : null },
       lastFetched: Date.now()
     };

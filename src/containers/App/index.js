@@ -5,8 +5,9 @@ import { dispatch } from '../../actions';
 import { Deck } from 'spectacle';
 import config from './spectacle';
 
-import Repo from '../Repo';
+// import Repo from '../Repo';
 import User from '../User';
+import UserLongSummary from '../User/UserLongSummary';
 
 import { SLIDE_DURATION } from '../../constants';
 
@@ -18,9 +19,8 @@ class App extends React.Component {
   render() {
     const { user, repo } = this.props;
     return user && repo ? (
-      <Deck {...config} autoplayDuration={SLIDE_DURATION}>
-        <Repo transition={['fade']} />
-        <User transition={['fade']} />
+      <Deck {...config} autoplayDuration={10000000000 || SLIDE_DURATION}>
+        <UserLongSummary transition={['fade']} />
       </Deck>
     ) : (
       <div>Loading...</div>
@@ -28,6 +28,8 @@ class App extends React.Component {
   }
 }
 
+// <User transition={['fade']} />
+// <Repo transition={['fade']} />
 export default connect(
   ({ user, repo }) => ({ user: user.data, repo: repo.data }),
   dispatch

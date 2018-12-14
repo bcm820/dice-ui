@@ -1,9 +1,9 @@
 import React from 'react';
 import { Heading, Text, Markdown } from 'spectacle';
-import { ellipsis } from '../utils';
+import { ellipsis, simpleParseTime } from '../utils';
 import { LONG_SUMMARY_WORD_LENGTH } from '../constants';
 
-const SingleDisplay = ({ heading, content }) => (
+const SingleDisplay = ({ activity }) => (
   <React.Fragment>
     <Text
       textAlign={'left'}
@@ -18,7 +18,7 @@ const SingleDisplay = ({ heading, content }) => (
       textColor={'tertiary'}
       style={{ textShadow: '0.7px 0.7px black', paddingTop: 20 }}
     >
-      {heading}
+      {activity.type}
     </Heading>
     <Markdown
       style={{
@@ -26,7 +26,10 @@ const SingleDisplay = ({ heading, content }) => (
         textAlign: 'left'
       }}
     >
-      {ellipsis(content, LONG_SUMMARY_WORD_LENGTH)}
+      {ellipsis(
+        simpleParseTime(activity.created_at) + ': ' + activity.summaryline,
+        LONG_SUMMARY_WORD_LENGTH
+      )}
     </Markdown>
   </React.Fragment>
 );

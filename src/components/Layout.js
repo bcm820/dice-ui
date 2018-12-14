@@ -9,10 +9,12 @@ import ListDisplay from './ListDisplay';
 const Layout = ({
   sidebarHeading,
   sidebarSubHeading,
+  sidebarSubText,
   image,
   listHeading,
   list,
-  events
+  activities,
+  shortSummaries = true
 }) => (
   <Table style={{ height: '100vh', width: '97vw', paddingBottom: 100 }}>
     <TableBody>
@@ -21,19 +23,17 @@ const Layout = ({
           <Sidebar
             heading={sidebarHeading}
             subHeading={sidebarSubHeading}
+            subText={sidebarSubText}
             image={image}
             listHeading={listHeading}
             list={list}
           />
         </TableItem>
         <TableItem style={{ paddingLeft: 25, paddingRight: 50 }}>
-          {events.length === 1 ? (
-            <SingleDisplay
-              heading={events[0].title}
-              content={events[0].description}
-            />
+          {shortSummaries ? (
+            <ListDisplay list={activities.short.slice(0, 3)} />
           ) : (
-            <ListDisplay list={events} />
+            <SingleDisplay activity={activities.long} />
           )}
         </TableItem>
       </TableRow>

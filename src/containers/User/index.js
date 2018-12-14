@@ -5,26 +5,23 @@ import { dispatch } from '../../actions';
 import { Slide } from 'spectacle';
 import Layout from '../../components/Layout';
 
-import { tempUserMult } from './temp.js';
-
 class User extends React.Component {
   componentDidMount() {
     this.props.fetchRepo();
   }
 
   render() {
-    // const { user } = this.props;
+    const user = this.props.user.data;
     return (
       <Slide align={'flex-start flex-start'}>
         <Layout
-          sidebarHeading={tempUserMult.displayName}
-          sidebarSubHeading={tempUserMult.username}
-          image={tempUserMult.image}
+          sidebarHeading={user.name}
+          sidebarSubHeading={user.username}
+          sidebarSubText={user.email}
+          image={user.image}
           listHeading={'Primary Repositories'}
-          list={tempUserMult.repos}
-          events={
-            tempUserMult.event ? [tempUserMult.event] : tempUserMult.events
-          }
+          list={user.repos}
+          activities={user.activities}
         />
       </Slide>
     );

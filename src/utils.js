@@ -8,4 +8,7 @@ export const ellipsis = (str, limit) => {
 export const getRandom = arr =>
   arr[Math.round(Math.random() * (arr.length - 1))];
 
+export const simpleParseTime = timeStr =>
+  timeStr.substring(0, timeStr.indexOf('T'));
+
 export const delay = ms => new Promise(resolve => setTimeout(resolve, ms));

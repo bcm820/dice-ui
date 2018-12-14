@@ -33,7 +33,10 @@ export default (src, id) => () =>
               users: [
                 {
                   username: 'ghershfield',
-                  display_name: 'Garth Hershfield'
+                  display_name: 'Garth Hershfield',
+                  avatar_url:
+                    'https://avatars1.githubusercontent.com/u/13615771?s=400&v=4',
+                  email: 'garth.hershfield@deciphernow.com'
                 }
               ]
             };

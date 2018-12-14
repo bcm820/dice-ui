@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Text } from 'spectacle';
-import { ellipsis } from '../utils';
+import { ellipsis, simpleParseTime } from '../utils';
 import { SHORT_SUMMARY_WORD_LENGTH } from '../constants';
 
 const Main = ({ list }) => (
@@ -13,24 +13,25 @@ const Main = ({ list }) => (
       Recent Events
     </Text>
     {list.map(item => (
-      <React.Fragment key={item.id}>
+      <React.Fragment key={item.created_at}>
         <Heading
           textAlign={'left'}
           size={6}
           textColor={'tertiary'}
           style={{ textShadow: '0.7px 0.7px black', paddingTop: 40 }}
         >
-          {item.type} {item.action}
+          {item.type}
         </Heading>
         <Text
           textAlign={'left'}
           textColor={'tertiary'}
           style={{ textShadow: '0.7px 0.7px black' }}
         >
-          {item.repo}
+          {item.repo_name}
         </Text>
         <Text textAlign={'left'} style={{ fontSize: '2.5vw' }}>
-          {item.date}: {ellipsis(item.title, SHORT_SUMMARY_WORD_LENGTH)}
+          {simpleParseTime(item.created_at)} -{' '}
+          {ellipsis(item.summaryline, SHORT_SUMMARY_WORD_LENGTH)}
         </Text>
       </React.Fragment>
     ))}

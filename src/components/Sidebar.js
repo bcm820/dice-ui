@@ -1,8 +1,14 @@
 import React from 'react';
-
 import { Image, Heading, Text } from 'spectacle';
 
-const SlideFooter = ({ heading, subHeading, image, listHeading, list }) => (
+const Sidebar = ({
+  heading,
+  subHeading,
+  subText,
+  image,
+  listHeading,
+  list
+}) => (
   <React.Fragment>
     <Image
       src={image}
@@ -21,6 +27,11 @@ const SlideFooter = ({ heading, subHeading, image, listHeading, list }) => (
     >
       {heading}
     </Heading>
+    {subText && (
+      <Text italic textAlign={'left'} style={{ fontSize: '1.75vw' }}>
+        {subText}
+      </Text>
+    )}
     <Text
       italic
       textAlign={'left'}
@@ -43,4 +54,4 @@ const SlideFooter = ({ heading, subHeading, image, listHeading, list }) => (
   </React.Fragment>
 );
 
-export default SlideFooter;
+export default Sidebar;

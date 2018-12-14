@@ -17,8 +17,9 @@ function* rootSaga() {
 
 export default (() => {
   const sagaMiddleware = createSagaMiddleware();
-  const logger = createLogger({ collapsed: (g, a, log) => !log.error });
-  const enhancers = applyMiddleware(sagaMiddleware, logger);
+  // const logger = createLogger({ collapsed: (g, a, log) => !log.error });
+  // const enhancers = applyMiddleware(sagaMiddleware, logger);
+  const enhancers = applyMiddleware(sagaMiddleware);
   const store = createStore(rootReducer, {}, compose(enhancers));
   sagaMiddleware.run(rootSaga);
 
