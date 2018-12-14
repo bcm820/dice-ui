@@ -1,0 +1,4 @@
+export const SLIDE_DURATION = 5000;
+
+export const LONG_SUMMARY_WORD_LENGTH = 60;
+export const SHORT_SUMMARY_WORD_LENGTH = 20;

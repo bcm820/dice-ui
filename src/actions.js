@@ -9,7 +9,6 @@ export const actions = {
   repoList: createActions('Get Repo List'),
   user: createActions('Get User'),
   repo: createActions('Get Repo'),
-  words: createActions('Update Word Count'),
   allRepos: createActions('Store Repo'),
   allUsers: createActions('Store User')
 };

@@ -9,14 +9,12 @@ import { tempRepo } from './temp.js';
 
 class Repo extends React.Component {
   componentDidMount() {
-    const { repo, fetchRepo, fetchUser } = this.props;
-    if (!repo.data) fetchRepo();
-    fetchUser();
+    this.props.fetchUser();
   }
 
   render() {
-    const { repo } = this.props;
-    return repo.data ? (
+    // const { repo } = this.props;
+    return (
       <Slide align={'flex-start flex-start'}>
         <Layout
           sidebarHeading={tempRepo.repoName}
@@ -27,8 +25,6 @@ class Repo extends React.Component {
           events={[tempRepo.event]}
         />
       </Slide>
-    ) : (
-      <Slide>Loading...</Slide>
     );
   }
 }

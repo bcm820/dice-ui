@@ -9,14 +9,12 @@ import { tempUserMult } from './temp.js';
 
 class User extends React.Component {
   componentDidMount() {
-    const { user, fetchUser, fetchRepo } = this.props;
-    if (!user.data) fetchUser();
-    fetchRepo();
+    this.props.fetchRepo();
   }
 
   render() {
-    const { user } = this.props;
-    return user.data ? (
+    // const { user } = this.props;
+    return (
       <Slide align={'flex-start flex-start'}>
         <Layout
           sidebarHeading={tempUserMult.displayName}
@@ -29,8 +27,6 @@ class User extends React.Component {
           }
         />
       </Slide>
-    ) : (
-      <Slide>Loading...</Slide>
     );
   }
 }

@@ -8,25 +8,27 @@ import config from './spectacle';
 import Repo from '../Repo';
 import User from '../User';
 
+import { SLIDE_DURATION } from '../../constants';
+
 class App extends React.Component {
   componentDidMount() {
     this.props.fetchLists();
   }
 
   render() {
-    console.log('render!');
-    // const slideDuration = this.props.words * 250 || 30000;
-    const slideDuration = 3000;
-    return (
-      <Deck {...config} autoplayDuration={slideDuration}>
+    const { user, repo } = this.props;
+    return user && repo ? (
+      <Deck {...config} autoplayDuration={SLIDE_DURATION}>
         <Repo transition={['fade']} />
         <User transition={['fade']} />
       </Deck>
+    ) : (
+      <div>Loading...</div>
     );
   }
 }
 
 export default connect(
-  ({ words }) => ({ words }),
+  ({ user, repo }) => ({ user: user.data, repo: repo.data }),
   dispatch
 )(App);

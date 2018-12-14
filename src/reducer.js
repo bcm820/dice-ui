@@ -9,12 +9,10 @@ const reducerShapes = {
   },
   accumulator: {
     initialState: {},
-    successAction: (state, data) => ({ ...state, ...data }),
-    errorAction: (state, _) => state
-  },
-  count: {
-    initialState: 300,
-    successAction: (_, data) => data,
+    successAction: (state, data) =>
+      data.repos
+        ? { ...state, [data.username]: data }
+        : { ...state, [data.name]: data },
     errorAction: (state, _) => state
   }
 };
@@ -46,7 +44,6 @@ export default combineReducers({
   repoList: makeReducer(actions.repoList),
   user: makeReducer(actions.user),
   repo: makeReducer(actions.repo),
-  words: makeReducer(actions.words, 'count'),
   allRepos: makeReducer(actions.allRepos, 'accumulator'),
   allUsers: makeReducer(actions.allUsers, 'accumulator')
 });

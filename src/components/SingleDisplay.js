@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, Text, Markdown } from 'spectacle';
 import { ellipsis } from '../utils';
+import { LONG_SUMMARY_WORD_LENGTH } from '../constants';
 
 const SingleDisplay = ({ heading, content }) => (
   <React.Fragment>
@@ -25,7 +26,7 @@ const SingleDisplay = ({ heading, content }) => (
         textAlign: 'left'
       }}
     >
-      {ellipsis(content, 60)}
+      {ellipsis(content, LONG_SUMMARY_WORD_LENGTH)}
     </Markdown>
   </React.Fragment>
 );

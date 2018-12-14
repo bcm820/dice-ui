@@ -1,6 +1,7 @@
 import React from 'react';
 import { Heading, Text } from 'spectacle';
 import { ellipsis } from '../utils';
+import { SHORT_SUMMARY_WORD_LENGTH } from '../constants';
 
 const Main = ({ list }) => (
   <React.Fragment>
@@ -29,7 +30,7 @@ const Main = ({ list }) => (
           {item.repo}
         </Text>
         <Text textAlign={'left'} style={{ fontSize: '2.5vw' }}>
-          {item.date}: {ellipsis(item.title, 20)}
+          {item.date}: {ellipsis(item.title, SHORT_SUMMARY_WORD_LENGTH)}
         </Text>
       </React.Fragment>
     ))}
