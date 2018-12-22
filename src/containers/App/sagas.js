@@ -4,8 +4,8 @@ import api from '../../common/api';
 
 export function* sendListsRequests() {
   const [userListData, repoListData] = yield all([
-    call(api('userList')),
-    call(api('repoList'))
+    call(api('getUserList')),
+    call(api('getRepoList'))
   ]);
 
   const userListError = userListData instanceof Error;

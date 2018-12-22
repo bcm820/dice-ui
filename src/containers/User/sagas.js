@@ -16,8 +16,8 @@ export function* sendUserRequest() {
     return yield put({ type: actions.user.success, payload: storedUser });
 
   const [repos, acts] = yield all([
-    call(api('userRepos', randUser.username)),
-    call(api('userActivities', randUser.username))
+    call(api('getUserRepos', randUser.username)),
+    call(api('getUserActivities', randUser.username))
   ]);
 
   if (repos instanceof Error)

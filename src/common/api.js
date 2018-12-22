@@ -2,16 +2,16 @@ import axios from 'axios';
 
 const DICE_SERVICE = 'http://localhost:8081';
 
-const endpoints = {
-  repoList: () => '/repos',
-  userList: () => '/users',
-  userRepos: id => `/users/${id}/repos`,
-  userActivities: id => `/users/${id}/activity`,
-  repoActivities: id => `/repos/${id}/activity`
+const requests = {
+  getRepoList: () => '/repos',
+  getUserList: () => '/users',
+  getUserRepos: param => `/users/${param}/repos`,
+  getUserActivities: param => `/users/${param}/activity`,
+  getRepoActivities: param => `/repos/${param}/activity`
 };
 
-export default (src, id) => () =>
+export default (type, param) => () =>
   axios
-    .get(DICE_SERVICE + endpoints[src](id))
+    .get(DICE_SERVICE + requests[type](param))
     .then(res => res.data)
     .catch(err => err);

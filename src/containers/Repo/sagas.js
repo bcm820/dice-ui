@@ -20,7 +20,7 @@ export function* sendRepoRequest() {
   if (storedRepo && Date.now() - storedRepo.lastFetched < DATA_UPDATE_INTERVAL)
     return yield put({ type: actions.repo.success, payload: storedRepo });
 
-  const acts = yield call(api('repoActivities', randRepo.FullName));
+  const acts = yield call(api('getRepoActivities', randRepo.FullName));
 
   if (acts instanceof Error)
     yield put({ type: actions.repo.error, payload: acts });
