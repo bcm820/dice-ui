@@ -1,3 +1,7 @@
+import lodashPartition from 'lodash.partition';
+
+export const partition = lodashPartition;
+
 export const getWordLength = str => str.split(' ').length;
 
 export const ellipsis = (str, limit) => {
