@@ -7,17 +7,22 @@ const Sidebar = ({
   subText,
   image,
   listHeading,
-  list
+  list,
+  isLogo
 }) => (
   <React.Fragment>
     <Image
       src={image}
       width={400}
-      style={{
-        border: '2px solid',
-        borderRadius: '35%',
-        marginBottom: 40
-      }}
+      style={
+        isLogo
+          ? { marginBottom: 40 }
+          : {
+              border: '2px solid',
+              borderRadius: '50%',
+              marginBottom: 40
+            }
+      }
     />
     <Heading
       size={5}
@@ -50,7 +55,7 @@ const Sidebar = ({
     ) : null}
     {list.map((item, i) => (
       <Text key={item + i} textAlign={'left'} style={{ fontSize: '1.5vw' }}>
-        {item}
+        {item.replace('DecipherNow/', '')}
       </Text>
     ))}
   </React.Fragment>

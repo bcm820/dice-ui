@@ -3,16 +3,16 @@ import { createLogger } from 'redux-logger';
 import rootReducer from './reducer';
 
 import createSagaMiddleware from 'redux-saga';
-import { takeEvery } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 import { actions } from './actions';
-import { sendListsRequests } from './containers/App/sagas';
-import { sendRepoRequest } from './containers/Repo/sagas';
-import { sendUserRequest } from './containers/User/sagas';
+import { sendListsRequests } from './App/sagas';
+import { sendRepoRequest } from './Repo/sagas';
+import { sendUserRequest } from './User/sagas';
 
 function* rootSaga() {
-  yield takeEvery('Get Lists: Request', sendListsRequests);
-  yield takeEvery(actions.repo.request, sendRepoRequest);
-  yield takeEvery(actions.user.request, sendUserRequest);
+  yield takeLatest('Get Lists: Request', sendListsRequests);
+  yield takeLatest(actions.repo.request, sendRepoRequest);
+  yield takeLatest(actions.user.request, sendUserRequest);
 }
 
 export default (() => {

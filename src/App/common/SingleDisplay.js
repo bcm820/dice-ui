@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, Text, Markdown } from 'spectacle';
-import { ellipsis, simpleParseTime } from '../utils';
-import { LONG_SUMMARY_WORD_LENGTH } from '../constants';
+import { ellipsis, simpleParseTime } from '../../utils';
+import { LONG_SUMMARY_WORD_LENGTH } from '../../constants';
 
 const SingleDisplay = ({ activity }) => (
   <React.Fragment>

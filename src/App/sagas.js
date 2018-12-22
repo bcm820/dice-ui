@@ -1,6 +1,6 @@
 import { all, put, call } from 'redux-saga/effects';
-import { actions } from '../../actions';
-import api from '../../api';
+import { actions } from '../actions';
+import api from '../api';
 
 export function* sendListsRequests() {
   const [userListData, repoListData] = yield all([

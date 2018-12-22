@@ -14,7 +14,8 @@ const Layout = ({
   listHeading,
   list,
   activities,
-  shortSummaries = true
+  shortSummaries = true,
+  isLogo
 }) => (
   <Table style={{ height: '100vh', width: '97vw', paddingBottom: 100 }}>
     <TableBody>
@@ -25,6 +26,7 @@ const Layout = ({
             subHeading={sidebarSubHeading}
             subText={sidebarSubText}
             image={image}
+            isLogo={isLogo}
             listHeading={listHeading}
             list={list}
           />

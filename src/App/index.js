@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dispatch } from '../../actions';
+import { dispatch } from '../actions';
 
 import { Deck } from 'spectacle';
 import config from './spectacle';
 
 import Repo from '../Repo';
 import User from '../User';
+
+import { SLIDE_DURATION } from '../constants';
 
 class App extends React.Component {
   componentDidMount() {
@@ -16,7 +18,7 @@ class App extends React.Component {
   render() {
     const { user, repo } = this.props;
     return user && repo ? (
-      <Deck {...config} autoplayDuration={8000}>
+      <Deck {...config} autoplayDuration={SLIDE_DURATION}>
         <User transition={['fade']} />
         <Repo transition={['fade']} />
         <User transition={['fade']} shortSummaries={false} />

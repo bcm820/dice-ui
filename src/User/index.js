@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dispatch } from '../../actions';
+import { dispatch } from '../actions';
 
 import { Slide } from 'spectacle';
-import Layout from '../../components/Layout';
+import Layout from '../App/common/Layout';
 
 class User extends React.Component {
   componentDidMount() {

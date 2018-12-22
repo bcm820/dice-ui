@@ -1,7 +1,7 @@
 import React from 'react';
 import { Heading, Text } from 'spectacle';
-import { ellipsis, simpleParseTime } from '../utils';
-import { SHORT_SUMMARY_WORD_LENGTH } from '../constants';
+import { ellipsis, simpleParseTime } from '../../utils';
+import { SHORT_SUMMARY_WORD_LENGTH } from '../../constants';
 
 const Main = ({ list }) => (
   <React.Fragment>

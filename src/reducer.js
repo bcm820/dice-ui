@@ -1,6 +1,28 @@
 import { combineReducers } from 'redux';
 import { actions } from './actions';
 
+/**
+ * Defines one of two types of reducers:
+ * 1. Stores a single object in either `data` (if success) or `error` (if failed)
+ * 2. Stores a accumulating collection of objects previously fetched
+ * @param {Object} actionObj - Object describing request, success, error actions
+ * @param {boolean} isSingleObj - Whether slice to update is a single container
+ * @returns {Object|Array} Next slice of a container's state
+ */
+const makeReducer = (actionObj, reducerType) => {
+  const shape = reducerShapes[reducerType];
+  return (state = shape.initialState, action) => {
+    switch (action.type) {
+      case actionObj.success:
+        return shape.successAction(state, action.payload);
+      case actionObj.error:
+        return shape.errorAction(state, action.payload);
+      default:
+        return state;
+    }
+  };
+};
+
 const reducerShapes = {
   current: {
     initialState: { data: null },
@@ -17,33 +39,11 @@ const reducerShapes = {
   }
 };
 
-/**
- * Defines one of two types of reducers:
- * 1. Stores a single object in either `data` (if success) or `error` (if failed)
- * 2. Stores a collection of objects previously fetched
- * @param {Object} actionObj - Object describing request, success, error actions
- * @param {boolean} isSingleObj - Whether slice to update is a single container
- * @returns {Object|Array} Next slice of a container's state
- */
-const makeReducer = (actionObj, reducerKey = 'current') => {
-  const shape = reducerShapes[reducerKey];
-  return (state = shape.initialState, action) => {
-    switch (action.type) {
-      case actionObj.success:
-        return shape.successAction(state, action.payload);
-      case actionObj.error:
-        return shape.errorAction(state, action.payload);
-      default:
-        return state;
-    }
-  };
-};
-
 export default combineReducers({
-  userList: makeReducer(actions.userList),
-  repoList: makeReducer(actions.repoList),
-  user: makeReducer(actions.user),
-  repo: makeReducer(actions.repo),
+  userList: makeReducer(actions.userList, 'current'),
+  repoList: makeReducer(actions.repoList, 'current'),
+  user: makeReducer(actions.user, 'current'),
+  repo: makeReducer(actions.repo, 'current'),
   allRepos: makeReducer(actions.allRepos, 'accumulator'),
   allUsers: makeReducer(actions.allUsers, 'accumulator')
 });
