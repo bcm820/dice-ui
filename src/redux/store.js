@@ -1,13 +1,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
+
 import rootReducer from './reducer';
+import { actions } from './actions';
 
 import createSagaMiddleware from 'redux-saga';
 import { takeLatest } from 'redux-saga/effects';
-import { actions } from './actions';
-import { sendListsRequests } from './App/sagas';
-import { sendRepoRequest } from './Repo/sagas';
-import { sendUserRequest } from './User/sagas';
+import { sendListsRequests } from '../containers/App/sagas';
+import { sendRepoRequest } from '../containers/Repo/sagas';
+import { sendUserRequest } from '../containers/User/sagas';
 
 function* rootSaga() {
   yield takeLatest('Get Lists: Request', sendListsRequests);
