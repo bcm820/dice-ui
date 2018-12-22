@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dispatch } from '../actions';
+import { dispatch } from '../../redux/actions';
 
 import { Deck } from 'spectacle';
 import config from './spectacle';
+import { SLIDE_DURATION } from '../../common/constants';
 
 import Repo from '../Repo';
 import User from '../User';
-
-import { SLIDE_DURATION } from '../constants';
 
 class App extends React.Component {
   componentDidMount() {

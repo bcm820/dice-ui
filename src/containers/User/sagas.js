@@ -1,16 +1,18 @@
 import { put, call, all, select } from 'redux-saga/effects';
-import { actions } from '../actions';
-import { getRandom, getWordLength } from '../utils';
-import api from '../api';
-import partition from 'lodash.partition';
-import { SHORT_SUMMARY_WORD_LENGTH } from '../constants';
+import { actions } from '../../redux/actions';
+import { getRandom, getWordLength, partition } from '../../common/helpers';
+import api from '../../common/api';
+import {
+  SHORT_SUMMARY_WORD_LENGTH,
+  DATA_UPDATE_INTERVAL
+} from '../../common/constants';
 
 export function* sendUserRequest() {
   const { userList, allUsers } = yield select();
 
   const randUser = getRandom(userList.data);
   const storedUser = allUsers[randUser.username];
-  if (storedUser && Date.now() - storedUser.lastFetched < 1800000)
+  if (storedUser && Date.now() - storedUser.lastFetched < DATA_UPDATE_INTERVAL)
     return yield put({ type: actions.user.success, payload: storedUser });
 
   const [repos, acts] = yield all([

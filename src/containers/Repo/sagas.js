@@ -1,18 +1,23 @@
 import { put, call, all, select } from 'redux-saga/effects';
-import { actions } from '../actions';
-import { getRandom, getWordLength } from '../utils';
-import api from '../api';
-import partition from 'lodash.partition';
-import { SHORT_SUMMARY_WORD_LENGTH } from '../constants';
-
-import { simpleParseTime } from '../utils';
+import { actions } from '../../redux/actions';
+import {
+  getRandom,
+  getWordLength,
+  simpleParseTime,
+  partition
+} from '../../common/helpers';
+import api from '../../common/api';
+import {
+  SHORT_SUMMARY_WORD_LENGTH,
+  DATA_UPDATE_INTERVAL
+} from '../../common/constants';
 
 export function* sendRepoRequest() {
   const { repoList, allRepos } = yield select();
 
   const randRepo = getRandom(repoList.data);
   const storedRepo = allRepos[randRepo.FullName];
-  if (storedRepo && Date.now() - storedRepo.lastFetched < 1800000)
+  if (storedRepo && Date.now() - storedRepo.lastFetched < DATA_UPDATE_INTERVAL)
     return yield put({ type: actions.repo.success, payload: storedRepo });
 
   const acts = yield call(api('repoActivities', randRepo.FullName));

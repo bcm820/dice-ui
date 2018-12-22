@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dispatch } from '../actions';
+import { dispatch } from '../../redux/actions';
 
 import { Slide } from 'spectacle';
-import Layout from '../App/common/Layout';
+import Layout from '../../components/Layout';
 import logo from './logo.png';
 
 class Repo extends React.Component {
