@@ -11,19 +11,26 @@ class User extends React.Component {
   }
 
   render() {
-    const user = this.props.user.data;
-    const { shortSummaries } = this.props;
+    const { data: user } = this.props.user;
     return (
       <Slide align={'flex-start flex-start'}>
         <Layout
-          sidebarHeading={user.name}
-          sidebarSubHeading={user.username}
-          sidebarSubText={user.email}
-          image={user.image}
-          listHeading={'Primary Repositories'}
-          list={user.repos}
-          activities={user.activities}
-          shortSummaries={shortSummaries}
+          display={{
+            type: this.props.type,
+            data: user.activities
+          }}
+          sidebar={{
+            image: user.image,
+            isLogo: false,
+            heading: user.name,
+            taglines: [user.username, user.email],
+            content: [
+              {
+                title: 'Repositories',
+                data: user.repos
+              }
+            ]
+          }}
         />
       </Slide>
     );

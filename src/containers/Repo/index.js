@@ -6,26 +6,42 @@ import { Slide } from 'spectacle';
 import Layout from '../../components/Layout';
 import logo from './logo.png';
 
+import { fmtDate } from '../../common/helpers';
+import { DATE_FORMAT } from '../../common/constants';
+
 class Repo extends React.Component {
   componentDidMount() {
     setTimeout(this.props.fetchUser, 1000);
   }
 
   render() {
-    const repo = this.props.repo.data;
-    const { shortSummaries } = this.props;
+    const { data: repo } = this.props.repo;
     return (
       <Slide align={'flex-start flex-start'}>
         <Layout
-          sidebarHeading={repo.name.replace('DecipherNow/', '')}
-          sidebarSubHeading={repo.description}
-          sidebarSubText={repo.language ? `Language: ${repo.language}` : null}
-          image={logo}
-          isLogo={true}
-          listHeading={'Dates'}
-          list={[`Created: ${repo.createdAt}`, `Updated: ${repo.updatedAt}`]}
-          activities={repo.activities}
-          shortSummaries={shortSummaries}
+          display={{
+            type: this.props.type,
+            data: repo.activities
+          }}
+          sidebar={{
+            image: logo,
+            isLogo: true,
+            heading: repo.shortName,
+            taglines: [repo.description],
+            content: [
+              {
+                title: 'Language',
+                data: [repo.language]
+              },
+              {
+                title: null,
+                data: [
+                  `Created ${fmtDate(repo.createdAt, DATE_FORMAT)}`,
+                  `Updated ${fmtDate(repo.updatedAt, DATE_FORMAT)}`
+                ]
+              }
+            ]
+          }}
         />
       </Slide>
     );

@@ -18,10 +18,10 @@ class App extends React.Component {
     const { user, repo } = this.props;
     return user && repo ? (
       <Deck {...config} autoplayDuration={SLIDE_DURATION}>
-        <User transition={['fade']} />
-        <Repo transition={['fade']} />
-        <User transition={['fade']} shortSummaries={false} />
-        <Repo transition={['fade']} shortSummaries={false} />
+        <User transition={['fade']} type={'Single'} />
+        <Repo transition={['fade']} type={'Single'} />
+        <User transition={['fade']} type={'List'} />
+        <Repo transition={['fade']} type={'List'} />
       </Deck>
     ) : (
       <div>Loading...</div>

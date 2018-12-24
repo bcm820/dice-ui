@@ -1,66 +1,31 @@
 import React from 'react';
-import { Heading, Text } from 'spectacle';
-import { ellipsis, simpleParseTime } from '../common/helpers';
-import { SHORT_SUMMARY_WORD_LENGTH } from '../common/constants';
+import { ellipsis, fmtDate } from '../common/helpers';
+import { SHORT_SUMMARY_WORD_LENGTH, DATE_FORMAT } from '../common/constants';
+import { SectionHeading } from '../styles/Headings';
+import DisplayContent from './DisplayContent';
+import DisplayContentNone from './DisplayContentNone';
 
-const Main = ({ list }) => (
+const ListDisplay = ({ data: list }) => (
   <React.Fragment>
-    <Text
-      textAlign={'left'}
-      caps
-      style={{ letterSpacing: '0.05em', opacity: 0.7 }}
-    >
-      Recent Activities
-    </Text>
+    <SectionHeading>Recent Activities</SectionHeading>
     {list.length ? (
-      list.map((item, i) => (
-        <React.Fragment key={item.created_at + i}>
-          <Heading
-            textAlign={'left'}
-            size={6}
-            textColor={'tertiary'}
-            style={{ textShadow: '0.7px 0.7px black', paddingTop: 40 }}
-          >
-            {item.type}
-          </Heading>
-          <Text
-            textAlign={'left'}
-            textColor={'tertiary'}
-            style={{ textShadow: '0.7px 0.7px black' }}
-          >
-            {item.repo_name}
-          </Text>
-          <Text textAlign={'left'} style={{ fontSize: '2.5vw' }}>
-            {simpleParseTime(item.created_at)} -{' '}
-            {ellipsis(item.summaryline, SHORT_SUMMARY_WORD_LENGTH)}
-          </Text>
-        </React.Fragment>
-      ))
+      list
+        .slice(0, 3)
+        .map(activity => (
+          <DisplayContent
+            key={`${activity.date}${activity.type}`}
+            heading={activity.type}
+            subHeading={activity.repo}
+            content={ellipsis(
+              `${fmtDate(activity.date, DATE_FORMAT)} - ${activity.summary}`,
+              SHORT_SUMMARY_WORD_LENGTH
+            )}
+          />
+        ))
     ) : (
-      <React.Fragment>
-        <Heading
-          textAlign={'left'}
-          size={5}
-          textColor={'tertiary'}
-          style={{ textShadow: '0.7px 0.7px black', paddingTop: 20 }}
-        >
-          No Activity Found!
-        </Heading>
-        <Text textAlign={'left'}>
-          We couldn't find any activity for this user / repository.
-          <br />
-          <br />
-          This screen tracks activity like commit messages, pull requests, and
-          comments.
-          <br />
-          <br />
-          We're sure the developer(s) represented on this slide are very hard at
-          work! Maybe next time this slide loads there will be more information
-          to display...
-        </Text>
-      </React.Fragment>
+      <DisplayContentNone message={'Nothing to list.'} />
     )}
   </React.Fragment>
 );
 
-export default Main;
+export default ListDisplay;
