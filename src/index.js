@@ -1,3 +1,6 @@
+// eslint-disable-next-line
+import all from './common/polyfills';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
