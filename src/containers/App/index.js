@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dispatch } from '../../redux/actions';
+import { dispatches } from '../../redux/actions';
 
 import { Deck } from 'spectacle';
 import config from './spectacle';
@@ -31,5 +31,5 @@ class App extends React.Component {
 
 export default connect(
   ({ user, repo }) => ({ user: user.data, repo: repo.data }),
-  dispatch
+  dispatches
 )(App);

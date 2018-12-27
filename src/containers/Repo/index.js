@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { dispatch } from '../../redux/actions';
+import { dispatches } from '../../redux/actions';
 
 import { Slide } from 'spectacle';
 import Layout from '../../components/Layout';
@@ -50,5 +50,5 @@ class Repo extends React.Component {
 
 export default connect(
   ({ repo }) => ({ repo }),
-  dispatch
+  dispatches
 )(Repo);

@@ -13,7 +13,7 @@ export const actions = {
   allUsers: createActions('Store User')
 };
 
-export const dispatch = {
+export const dispatches = {
   fetchLists: () => ({ type: 'Get Lists: Request' }),
   fetchUser: () => ({ type: actions.user.request }),
   fetchRepo: () => ({ type: actions.repo.request })
