@@ -7,7 +7,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: Avenir Next;
+    font-family: Arial;
     background-color: #BED8D4;
   }
 `;

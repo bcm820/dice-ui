@@ -39,14 +39,10 @@ class App extends React.Component {
           {...{
             imageUrl:
               'https://pbs.twimg.com/profile_images/446356636710363136/OYIaJ1KK_400x400.png',
-            fullName: 'React',
+            name: 'React',
             username: '@reactjs',
             date: '19 Dec 2018',
-            content: `Just released a performance bugfix for React.lazy. Thanks to @janrywang for reporting it! 🙌
-            React 16.7: No, This Is Not The One With Hooks`,
-            comments: 22,
-            retweets: 256,
-            likes: 926
+            content: `Just released a performance bugfix for React.lazy. Thanks to @janrywang for reporting it! 🙌 \n\nReact 16.7: No, This Is Not The One With Hooks`
           }}
         />
         {/*current.map(c => (

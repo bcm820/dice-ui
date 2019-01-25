@@ -1,23 +1,33 @@
 import React from 'react';
-import { Column, Row } from '../../common/styles';
-import { CardContainer, IconColumn } from './styles';
+import { Row } from '../../common/styles';
+import {
+  CardContainer,
+  IconColumn,
+  Icon,
+  NewsColumn,
+  Name,
+  UsernameWithDate,
+  StyledMarkdown
+} from './styles';
 
-const Card = ({
-  imageUrl,
-  fullName,
-  username,
-  date,
-  content,
-  comments,
-  retweets,
-  likes
-}) => (
+const Card = ({ imageUrl, name, username, date, content }) => (
   <CardContainer>
     <Row>
       <IconColumn>
-        <img width={'100%'} src={imageUrl} alt={``} />
+        <Icon width={'100%'} src={imageUrl} alt={``} />
       </IconColumn>
-      <Column>Blah!</Column>
+      <NewsColumn>
+        <Row>
+          <Name>{name}</Name>
+          <span>&nbsp;</span>
+          <UsernameWithDate>
+            {username} · {date}
+          </UsernameWithDate>
+        </Row>
+        <Row>
+          <StyledMarkdown key={content.substring(0, 10)} source={content} />
+        </Row>
+      </NewsColumn>
     </Row>
   </CardContainer>
 );

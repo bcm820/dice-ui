@@ -5,6 +5,6 @@ export const FeedContainer = styled.div`
   ${columnStyles}
   align-items: center;
   align-content: center;
-  margin-top: 8vh;
-  margin-bottom: 8vh;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
 `;

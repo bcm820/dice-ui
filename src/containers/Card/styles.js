@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { columnStyles } from '../../common/styles';
+import Markdown from 'react-markdown';
 
 export const CardContainer = styled.div`
-  max-height: 85vh;
-  width: 85vw;
+  max-height: 90vh;
+  width: 90vw;
   padding: 2vw;
-  font-size: 7vh;
+  font-size: 6vh;
   background-color: #f7f9f9;
   margin-bottom: 7px;
   box-shadow: 1.5px 2px #9cb1ae;
@@ -13,6 +14,35 @@ export const CardContainer = styled.div`
 
 export const IconColumn = styled.div`
   ${columnStyles}
-  width: 12vw;
-  margin: 2vw;
+  width: 10vw;
+  margin: 1vw;
+`;
+
+export const Icon = styled.img`
+  border: 1px solid #ffffff;
+  border-radius: 50%;
+`;
+
+export const NewsColumn = styled.div`
+  ${columnStyles}
+  margin-left: 1vw;
+  margin-right: 2vw;
+  margin-top: 0.5vh;
+  flex: 1;
+`;
+
+export const Name = styled.span`
+  font-weight: bold;
+`;
+
+export const UsernameWithDate = styled.span`
+  color: #cbcccc;
+`;
+
+export const StyledMarkdown = styled(Markdown)`
+  > p {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 0.5vh;
+  }
 `;
