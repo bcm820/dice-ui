@@ -10,6 +10,4 @@ export const actions = {
   moving: createActions('Set Movement')
 };
 
-export const dispatches = {
-  fetchCurrent: () => ({ type: actions.current.request })
-};
+export const dispatchRequest = () => ({ type: actions.current.request });

@@ -1,5 +1,8 @@
 import { parseDate } from '../../common/helpers';
 
+// TO DO:
+// - Slice data up into 5 strings, a random number (forks), and 2 dates
+
 export const mapUserList = ({ users }) =>
   users.map(u => ({
     name: u.display_name,
@@ -7,22 +10,3 @@ export const mapUserList = ({ users }) =>
     image: u.avatar_url,
     email: u.email
   }));
-
-export const mapRepoList = ({ repositories }) => {
-  const now = new Date();
-  now.setMonth(now.getMonth() - 1);
-  if (now.getDate() >= 28) now.setDate(28);
-  return repositories
-    .filter(r => r.updatedAt < now)
-    .map(r => ({
-      createdAt: parseDate(r.CreatedAt),
-      updatedAt: parseDate(r.UpdatedAt),
-      name: r.FullName,
-      shortName: r.Name,
-      description: r.Description || 'No description provided.',
-      language: r.Language,
-      size: parseInt(r.Size, 10) || 0,
-      forks: parseInt(r.ForksCount, 10) || 0
-    }))
-    .sort((a, b) => b.updatedAt - a.updatedAt);
-};
