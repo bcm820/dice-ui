@@ -13,6 +13,7 @@ export const mapRepoList = ({ repositories }) => {
   now.setMonth(now.getMonth() - 1);
   if (now.getDate() >= 28) now.setDate(28);
   return repositories
+    .filter(r => r.updatedAt < now)
     .map(r => ({
       createdAt: parseDate(r.CreatedAt),
       updatedAt: parseDate(r.UpdatedAt),
@@ -23,6 +24,5 @@ export const mapRepoList = ({ repositories }) => {
       size: parseInt(r.Size, 10) || 0,
       forks: parseInt(r.ForksCount, 10) || 0
     }))
-    .sort((a, b) => b.updatedAt - a.updatedAt)
-    .takeUntil(r => r.updatedAt < now);
+    .sort((a, b) => b.updatedAt - a.updatedAt);
 };

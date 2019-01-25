@@ -5,16 +5,11 @@ const createActions = type => ({
 });
 
 export const actions = {
-  userList: createActions('Get User List'),
-  repoList: createActions('Get Repo List'),
-  user: createActions('Get User'),
-  repo: createActions('Get Repo'),
-  allRepos: createActions('Store Repo'),
-  allUsers: createActions('Store User')
+  current: createActions('Get Current'),
+  previous: createActions('Store Previous'),
+  moving: createActions('Set Movement')
 };
 
 export const dispatches = {
-  fetchLists: () => ({ type: 'Get Lists: Request' }),
-  fetchUser: () => ({ type: actions.user.request }),
-  fetchRepo: () => ({ type: actions.repo.request })
+  fetchCurrent: () => ({ type: actions.current.request })
 };

@@ -5,15 +5,11 @@ import rootReducer from './reducer';
 import { actions } from './actions';
 
 import createSagaMiddleware from 'redux-saga';
-import { takeLatest } from 'redux-saga/effects';
-import { sendListsRequests } from '../containers/App/sagas';
-import { sendRepoRequest } from '../containers/Repo/sagas';
-import { sendUserRequest } from '../containers/User/sagas';
+import { takeEvery } from 'redux-saga/effects';
+import { sendCurrentRequest } from '../containers/NewApp/sagas';
 
 function* rootSaga() {
-  yield takeLatest('Get Lists: Request', sendListsRequests);
-  yield takeLatest(actions.repo.request, sendRepoRequest);
-  yield takeLatest(actions.user.request, sendUserRequest);
+  yield takeEvery(actions.current.request, sendCurrentRequest);
 }
 
 export default (() => {

@@ -1,13 +1,10 @@
 import axios from 'axios';
 
-const DICE_SERVICE = 'http://localhost:8081';
+// const DICE_SERVICE = 'http://localhost:8081';
 
+const DICE_SERVICE = `https://baconipsum.com/api`;
 const requests = {
-  getRepoList: () => '/repos',
-  getUserList: () => '/users',
-  getUserRepos: param => `/users/${param}/repos`,
-  getUserActivities: param => `/users/${param}/activity`,
-  getRepoActivities: param => `/repos/${param}/activity`
+  getData: () => `?type=all-meat&sentences=2`
 };
 
 export default (type, param) => () =>

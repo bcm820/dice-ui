@@ -10,10 +10,11 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-markdown": "^4.0.4",
+    "react-pose": "^4.0.6",
     "react-redux": "^6.0.0",
     "react-scripts": "2.1.1",
     "redux-logger": "^3.0.6",
-    "redux-saga": "^0.16.2",
+    "redux-saga": "^1.0.0",
     "spectacle": "^5.2.2",
     "styled-components": "^4.1.2"
   },

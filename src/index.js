@@ -1,16 +1,13 @@
-// eslint-disable-next-line
-import all from './common/polyfills';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import App from './containers/App';
+import NewApp from './containers/NewApp';
 import store from './redux/store';
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <NewApp />
   </Provider>,
   document.getElementById('root')
 );
