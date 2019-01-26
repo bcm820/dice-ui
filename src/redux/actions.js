@@ -1,13 +1,17 @@
-const createActions = type => ({
-  request: `${type}: Request`,
-  success: `${type}: Success`,
-  error: `${type}: Error`
-});
+const createActions = (type, ...actions) =>
+  actions.reduce((acc, arg) => ({ ...acc, [arg]: `${type}: ${arg}` }), {});
+
+const callActions = ['Request', 'Success', 'Error'];
+const pausableActions = ['Init', 'Clear'];
 
 export const actions = {
-  current: createActions('Get Current'),
-  previous: createActions('Store Previous'),
-  moving: createActions('Set Movement')
+  fetch: createActions('Fetch', ...pausableActions),
+  current: createActions('Current', ...callActions),
+  previous: createActions('Previous', ...callActions),
+  move: createActions('Move', ...pausableActions)
 };
 
-export const dispatchRequest = () => ({ type: actions.current.request });
+export const dispatches = {
+  startFetching: () => ({ type: actions.fetch.Init }),
+  stopFetching: () => ({ type: actions.fetch.Clear })
+};

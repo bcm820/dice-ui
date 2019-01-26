@@ -10,7 +10,7 @@ import {
   StyledMarkdown
 } from './styles';
 
-const Card = ({ imageUrl, name, username, date, content }) => (
+const Card = ({ id, event, username, imageUrl, repo, date, content }) => (
   <CardContainer>
     <Row>
       <IconColumn>
@@ -18,14 +18,14 @@ const Card = ({ imageUrl, name, username, date, content }) => (
       </IconColumn>
       <NewsColumn>
         <Row>
-          <Name>{name}</Name>
+          <Name>{username}</Name>
           <span>&nbsp;</span>
           <UsernameWithDate>
-            {username} · {date}
+            {repo} · {date}
           </UsernameWithDate>
         </Row>
         <Row>
-          <StyledMarkdown key={content.substring(0, 10)} source={content} />
+          <StyledMarkdown source={`${event}: ${content}`} />
         </Row>
       </NewsColumn>
     </Row>

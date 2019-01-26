@@ -6,10 +6,11 @@ import { actions } from './actions';
 
 import createSagaMiddleware from 'redux-saga';
 import { takeEvery } from 'redux-saga/effects';
-import { sendCurrentRequest } from '../containers/NewApp/sagas';
+import { startFetching, stopFetching } from '../containers/App/sagas';
 
 function* rootSaga() {
-  yield takeEvery(actions.current.request, sendCurrentRequest);
+  yield takeEvery(actions.fetch.Init, startFetching);
+  yield takeEvery(actions.fetch.Clear, stopFetching);
 }
 
 export default (() => {

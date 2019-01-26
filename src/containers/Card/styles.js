@@ -3,10 +3,9 @@ import { columnStyles } from '../../common/styles';
 import Markdown from 'react-markdown';
 
 export const CardContainer = styled.div`
-  max-height: 90vh;
   width: 90vw;
   padding: 2vw;
-  font-size: 6vh;
+  font-size: 5vh;
   background-color: #f7f9f9;
   margin-bottom: 7px;
   box-shadow: 1.5px 2px #9cb1ae;
